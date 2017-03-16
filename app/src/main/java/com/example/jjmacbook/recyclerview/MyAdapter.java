@@ -14,8 +14,11 @@ import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
 
+    //Mi lista de nombres
     private List<String> names;
+    //Layout con el que queremos inflar la vista
     private int layout;
+    //Interfaz
     private OnItemClickListener itemClickListener;
 
     //Constructor Myadapter
@@ -25,6 +28,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
         this.itemClickListener = listener;
     }
 
+    //Método que se sobreescribe para inflar la vista con nuestro layout y pasarlo a nuestro consctructor de ViewHolder
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
@@ -36,11 +40,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
         return vh;
     }
 
+    //Método sobreescrito para el volcado de datos
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.bind(names.get(position), itemClickListener);
     }
 
+    //Método que se sobreescribe para extraer el número de elementos de la lista
     @Override
     public int getItemCount() {
         return names.size();
@@ -70,7 +76,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
         }
     }
 
-    //Se crea una interfaz
+    //Se crea una interfaz con un método OnItemClick
     public interface OnItemClickListener {
          void OnItemClick(String name, int position);
     }
